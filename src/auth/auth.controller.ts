@@ -1,9 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Post } from '@nestjs/common';
 
 @Controller('api/auth')
 export class AuthController {
-  @Get('signup')
+  @Post('signup')
   test() {
     return 'test';
+  }
+
+  @Post('signin')
+  test1() {
+    return 'tes1';
   }
 }
