@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from 'src/auth/schemas/user.schema';
@@ -10,20 +10,6 @@ export class UsersService {
 
   async create(userDto: UserDto): Promise<User | undefined> {
     const newUser = new this.userModel(userDto);
-    const { username, email, password } = newUser;
-
-    /*  if (!username || !email || !password) {
-      throw new HttpException(
-        {
-          statusCode: HttpStatus.UNAUTHORIZED,
-          message: 'full credentials required',
-        },
-        HttpStatus.UNAUTHORIZED,
-      );
-    } */
-
-    /* const user = await this.userModel.exists({ test }); */
-
     return newUser.save();
   }
 

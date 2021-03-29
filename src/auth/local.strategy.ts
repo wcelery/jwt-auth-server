@@ -1,6 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { Error } from 'mongoose';
 import { Strategy } from 'passport-local';
 import { AuthService } from './auth.service';
 
