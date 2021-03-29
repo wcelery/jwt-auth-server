@@ -7,7 +7,7 @@ import { User, UserDocument } from './schemas/user.schema';
 export class AuthService {
   constructor(@InjectModel(User.name) private UserModel: Model<UserDocument>) {}
 
-  testtt() {
-    return 101;
+  async signUp() {
+    /* const newUser = new this.UserModel({username: 'test'}) */
   }
 }
