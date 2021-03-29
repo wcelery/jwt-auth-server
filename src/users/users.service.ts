@@ -15,6 +15,8 @@ export class UsersService {
   }
 
   async findOne(username: string): Promise<User> {
+    console.log('async findOne():', username);
+
     return this.userModel.findOne({ username });
   }
 }

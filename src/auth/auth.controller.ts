@@ -1,14 +1,20 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common';
+import { UserDto } from 'src/users/dto/user.dto';
+import { UsersService } from 'src/users/users.service';
+import { LocalAuthGuard } from './local-auth.guard';
 
 @Controller('api/auth')
 export class AuthController {
-  @Post('signup')
-  test() {
-    return 'test';
+  constructor(private usersService: UsersService) {}
+
+  @Post('create')
+  create(@Body() userDto: UserDto) {
+    return this.usersService.create(userDto);
   }
 
+  @UseGuards(LocalAuthGuard) //instead of @UseGuards(AuthGuard('local'))
   @Post('signin')
-  test1() {
-    return 'tes1';
+  async login(@Request() req) {
+    return req.user;
   }
 }
