@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Error } from 'mongoose';
 import { Strategy } from 'passport-local';
@@ -16,7 +16,10 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     const user = await this.authService.validateUser(username, password);
 
     if (!user) {
-      throw new Error('no user provided');
+      throw new HttpException(
+        { statusCode: HttpStatus.NOT_FOUND, message: 'user is not found' },
+        HttpStatus.NOT_FOUND,
+      );
     }
     return user;
   }

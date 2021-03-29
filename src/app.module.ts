@@ -7,7 +7,11 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [AuthModule, MongooseModule.forRoot(connectionString), UsersModule],
+  imports: [
+    AuthModule,
+    MongooseModule.forRoot(connectionString, { useCreateIndex: true }),
+    UsersModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
