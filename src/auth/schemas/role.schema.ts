@@ -5,8 +5,8 @@ export type RoleDocument = Role & Document;
 
 @Schema()
 export class Role {
-  @Prop()
-  name: string;
+  @Prop([String])
+  name: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(Role);
