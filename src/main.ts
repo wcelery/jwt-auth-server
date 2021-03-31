@@ -9,7 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(
     new MongoExceptionFilter(),
-    new MongooseExceptionFilter(),
+    /* new MongooseExceptionFilter(), */
   );
   await app.listen(3000);
 }
