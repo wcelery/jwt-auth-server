@@ -23,7 +23,7 @@ export class MongoExceptionFilter implements ExceptionFilter {
   catch(exception: MongoError, host: ArgumentsHost) {
     switch (exception.code) {
       case 11000:
-        builder(HttpStatus.FORBIDDEN, 'this is email already exists', host);
+        builder(HttpStatus.FORBIDDEN, 'this email is already exists', host);
     }
   }
 }
