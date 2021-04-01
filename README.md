@@ -5,3 +5,7 @@
 <p align="center">
   Dont fully understand how is this working, but it's working somehow
 </p>
+
+Made with NestJS, Passport and some little libs
+
+RBAC is yet to come (probably not), cant figure it out
