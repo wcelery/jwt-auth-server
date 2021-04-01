@@ -14,8 +14,11 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
 
     if (!user) {
       throw new HttpException(
-        { statusCode: HttpStatus.NOT_FOUND, message: 'user is not found' },
-        HttpStatus.NOT_FOUND,
+        {
+          statusCode: HttpStatus.UNAUTHORIZED,
+          message: 'wrong username / password',
+        },
+        HttpStatus.UNAUTHORIZED,
       );
     }
     return user;

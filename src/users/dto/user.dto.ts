@@ -5,7 +5,9 @@ export class UserDto {
 
   @IsEmail()
   email: string;
+
   @IsNotEmpty()
   password: string;
+
   role: string[];
 }
