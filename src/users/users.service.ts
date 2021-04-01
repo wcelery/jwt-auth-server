@@ -4,10 +4,14 @@ import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { User, UserDocument } from 'src/auth/schemas/user.schema';
 import { UserDto } from './dto/user.dto';
+import { Role, RoleDocument } from 'src/auth/schemas/role.schema';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+    @InjectModel(Role.name) private roleModel: Model<RoleDocument>,
+  ) {}
 
   async create(userDto: UserDto): Promise<User | undefined> {
     const newUser = new this.userModel(userDto);
@@ -17,6 +21,10 @@ export class UsersService {
     newUser.password = hash;
     return newUser.save();
   }
+
+  /* async getRoles(): Promise<Role> {
+    return this.roleModel.findOne();
+  } */
 
   async findOne(username: string): Promise<User> {
     return this.userModel.findOne({ username });
