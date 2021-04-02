@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { connectionString } from './config/db.config';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -10,7 +11,7 @@ import { UsersModule } from './users/users.module';
     MongooseModule.forRoot(connectionString, { useCreateIndex: true }), //connects with AuthModule
     UsersModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}
